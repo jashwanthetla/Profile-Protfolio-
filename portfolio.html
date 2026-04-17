@@ -36,7 +36,6 @@
     overflow-x: hidden;
   }
 
-  /* ── GRAIN OVERLAY ── */
   body::before {
     content: '';
     position: fixed;
@@ -47,7 +46,6 @@
     z-index: 1000;
   }
 
-  /* ── GRID LINES ── */
   body::after {
     content: '';
     position: fixed;
@@ -60,7 +58,6 @@
     z-index: 0;
   }
 
-  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -83,11 +80,7 @@
     text-decoration: none;
   }
 
-  .nav-links {
-    display: flex;
-    gap: 2.2rem;
-    list-style: none;
-  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
 
   .nav-links a {
     font-family: var(--mono);
@@ -100,7 +93,6 @@
   }
   .nav-links a:hover { color: var(--accent); }
 
-  /* ── HERO ── */
   #hero {
     position: relative;
     min-height: 100vh;
@@ -123,13 +115,7 @@
     align-items: center;
     gap: 0.8rem;
   }
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-  }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
 
   .hero-name {
     font-family: var(--display);
@@ -140,10 +126,7 @@
     color: var(--text);
     margin-bottom: 2.4rem;
   }
-
-  .hero-name span {
-    color: var(--accent);
-  }
+  .hero-name span { color: var(--accent); }
 
   .hero-philosophy {
     max-width: 560px;
@@ -165,16 +148,8 @@
   }
   .hero-goal span { color: var(--accent); }
 
-  .hero-stats {
-    display: flex;
-    gap: 3rem;
-    flex-wrap: wrap;
-  }
-
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-  }
+  .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
+  .stat-item { display: flex; flex-direction: column; }
 
   .stat-num {
     font-family: var(--display);
@@ -193,13 +168,7 @@
     margin-top: 0.3rem;
   }
 
-  /* ── SECTION LAYOUT ── */
-  .section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 6rem 3rem;
-    position: relative;
-  }
+  .section { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; position: relative; }
 
   .section-label {
     font-family: var(--mono);
@@ -212,13 +181,7 @@
     align-items: center;
     gap: 0.8rem;
   }
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 28px;
-    height: 1px;
-    background: var(--accent);
-  }
+  .section-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent); }
 
   .section-title {
     font-family: var(--display);
@@ -229,7 +192,6 @@
     color: var(--text);
   }
 
-  /* ── PROFILES ── */
   .profiles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -260,10 +222,7 @@
     transition: transform 0.3s;
   }
 
-  .profile-card:hover {
-    border-color: rgba(74,240,180,0.35);
-    transform: translateY(-3px);
-  }
+  .profile-card:hover { border-color: rgba(74,240,180,0.35); transform: translateY(-3px); }
   .profile-card:hover::before { transform: scaleX(1); }
 
   .profile-platform {
@@ -283,17 +242,12 @@
     margin-bottom: 1.2rem;
   }
 
-  .profile-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  .profile-stats { display: flex; flex-direction: column; gap: 0.75rem; }
 
   .profile-stat {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.82rem;
   }
 
   .profile-stat-key {
@@ -317,9 +271,51 @@
     color: var(--text-muted);
     transition: color 0.2s, transform 0.2s;
   }
-  .profile-card:hover .profile-arrow {
-    color: var(--accent);
-    transform: translate(3px, -3px);
+  .profile-card:hover .profile-arrow { color: var(--accent); transform: translate(3px, -3px); }
+
+  /* ── STAR RATING ── */
+  .star-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .star {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .star svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: filter 0.3s;
+  }
+
+  .star.filled svg {
+    filter: drop-shadow(0 0 4px rgba(255,196,0,0.8));
+  }
+
+  .star.dim svg {
+    opacity: 0.18;
+    filter: none;
+  }
+
+  .profile-card:hover .star.filled svg {
+    filter: drop-shadow(0 0 7px rgba(255,196,0,1)) drop-shadow(0 0 12px rgba(255,196,0,0.4));
+  }
+
+  .star-badge {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: #ffc400;
+    background: rgba(255,196,0,0.1);
+    border: 1px solid rgba(255,196,0,0.25);
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin-left: 4px;
+    letter-spacing: 0.04em;
   }
 
   /* ── PROJECTS ── */
@@ -332,32 +328,13 @@
     overflow: hidden;
     transition: border-color 0.25s;
   }
-
   .project-card:hover { border-color: rgba(74,240,180,0.3); }
 
-  .project-number {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    letter-spacing: 0.15em;
-    margin-bottom: 1rem;
-  }
+  .project-number { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.15em; margin-bottom: 1rem; }
 
-  .project-title {
-    font-family: var(--display);
-    font-size: 1.55rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
-  }
+  .project-title { font-family: var(--display); font-size: 1.55rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.01em; }
 
-  .project-desc {
-    color: var(--text-mid);
-    font-size: 0.92rem;
-    line-height: 1.75;
-    max-width: 680px;
-  }
+  .project-desc { color: var(--text-mid); font-size: 0.92rem; line-height: 1.75; max-width: 680px; }
 
   .project-tag {
     display: inline-block;
@@ -373,12 +350,7 @@
     margin-top: 1.4rem;
   }
 
-  /* ── CERTIFICATIONS ── */
-  .certs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.2rem;
-  }
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
 
   .cert-card {
     background: var(--surface);
@@ -390,55 +362,16 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    position: relative;
-    overflow: hidden;
     transition: border-color 0.25s, transform 0.2s;
   }
+  .cert-card:hover { border-color: rgba(74,240,180,0.3); transform: translateY(-2px); }
 
-  .cert-card:hover {
-    border-color: rgba(74,240,180,0.3);
-    transform: translateY(-2px);
-  }
+  .cert-issuer { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+  .cert-name { font-size: 0.92rem; font-weight: 500; color: var(--text); line-height: 1.4; }
+  .cert-link-label { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); margin-top: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
+  .cert-no-link { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); opacity: 0.5; margin-top: 0.4rem; }
 
-  .cert-issuer {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .cert-name {
-    font-size: 0.92rem;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.4;
-  }
-
-  .cert-link-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    margin-top: 0.4rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .cert-no-link {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    opacity: 0.5;
-    margin-top: 0.4rem;
-  }
-
-  /* ── CONTACT ── */
-  .contact-row {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
+  .contact-row { display: flex; flex-direction: column; gap: 1.2rem; }
 
   .contact-item {
     display: flex;
@@ -453,27 +386,11 @@
     transition: border-color 0.2s, transform 0.2s;
     max-width: 520px;
   }
+  .contact-item:hover { border-color: rgba(74,240,180,0.3); transform: translateX(4px); }
 
-  .contact-item:hover {
-    border-color: rgba(74,240,180,0.3);
-    transform: translateX(4px);
-  }
+  .contact-type { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); min-width: 72px; }
+  .contact-value { font-size: 0.9rem; color: var(--text-mid); }
 
-  .contact-type {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    min-width: 72px;
-  }
-
-  .contact-value {
-    font-size: 0.9rem;
-    color: var(--text-mid);
-  }
-
-  /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
     padding: 2rem 3rem;
@@ -485,35 +402,13 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
+  footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.08em; }
 
-  footer p {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-  }
+  .divider { width: 100%; height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
 
-  /* ── DIVIDER ── */
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── SCROLL FADE-IN ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.2rem; }
@@ -526,7 +421,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="nav-logo">&lt;Jashwanth Profile /&gt;</a>
   <ul class="nav-links">
@@ -537,19 +431,15 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <p class="hero-eyebrow">Software Developer</p>
   <h1 class="hero-name">ETLA<br /><span>JASHWANTH</span></h1>
-
   <p class="hero-philosophy">
     "I believe in the power of optimism and continuous improvement, which has driven my success in past roles and will continue to do so in the future."
   </p>
-
   <p class="hero-goal">
     // Currently aiming for <span>SDE roles</span> and improving DSA for top tech companies
   </p>
-
   <div class="hero-stats">
     <div class="stat-item">
       <span class="stat-num">420+</span>
@@ -568,14 +458,11 @@
 
 <div class="divider"></div>
 
-<!-- PROFILES -->
 <section id="profiles" class="section">
   <p class="section-label">Competitive Programming</p>
   <h2 class="section-title">Practice Profiles</h2>
-
   <div class="profiles-grid">
 
-    <!-- LeetCode -->
     <a class="profile-card fade-in" href="https://leetcode.com/u/klu_00017/" target="_blank" rel="noopener">
       <p class="profile-platform">Main Hub</p>
       <p class="profile-name">LeetCode</p>
@@ -596,7 +483,6 @@
       <span class="profile-arrow">↗</span>
     </a>
 
-    <!-- CodeChef -->
     <a class="profile-card fade-in" href="https://www.codechef.com/users/klu100017" target="_blank" rel="noopener">
       <p class="profile-platform">Competitive</p>
       <p class="profile-name">CodeChef</p>
@@ -613,19 +499,36 @@
       <span class="profile-arrow">↗</span>
     </a>
 
-    <!-- HackerRank -->
+    <!-- HackerRank — SVG stars with glow -->
     <a class="profile-card fade-in" href="https://www.hackerrank.com/profile/h2300100017" target="_blank" rel="noopener">
       <p class="profile-platform">Skill Badges</p>
       <p class="profile-name">HackerRank</p>
       <div class="profile-stats">
+
         <div class="profile-stat">
           <span class="profile-stat-key">Problem Solving</span>
-          <span class="profile-stat-val">★★★★★</span>
+          <span class="star-row">
+            <span class="star filled"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star filled"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star filled"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star filled"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star filled"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star-badge">5★</span>
+          </span>
         </div>
+
         <div class="profile-stat">
           <span class="profile-stat-key">Python</span>
-          <span class="profile-stat-val">★★★★☆</span>
+          <span class="star-row">
+            <span class="star filled"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star filled"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star filled"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star filled"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star dim"><svg viewBox="0 0 20 20"><polygon points="10,1 12.9,7 19.5,7.6 14.5,12 16.2,18.5 10,15 3.8,18.5 5.5,12 0.5,7.6 7.1,7" fill="#ffc400"/></svg></span>
+            <span class="star-badge">4★</span>
+          </span>
         </div>
+
       </div>
       <span class="profile-arrow">↗</span>
     </a>
@@ -635,11 +538,9 @@
 
 <div class="divider"></div>
 
-<!-- PROJECTS -->
 <section id="projects" class="section">
   <p class="section-label">Work</p>
   <h2 class="section-title">Projects</h2>
-
   <div class="project-card fade-in">
     <p class="project-number">01 — Featured Project</p>
     <h3 class="project-title">EV Charging Station Recommendation System</h3>
@@ -659,11 +560,9 @@
 
 <div class="divider"></div>
 
-<!-- CERTIFICATIONS -->
 <section id="certs" class="section">
   <p class="section-label">Credentials</p>
   <h2 class="section-title">Certifications</h2>
-
   <div class="certs-grid">
 
     <a class="cert-card fade-in" href="https://www.hackerrank.com/certificates/7de8da54178a" target="_blank" rel="noopener">
@@ -695,11 +594,9 @@
 
 <div class="divider"></div>
 
-<!-- CONTACT -->
 <section id="contact" class="section">
   <p class="section-label">Get in Touch</p>
   <h2 class="section-title">Contact</h2>
-
   <div class="contact-row">
 
     <a class="contact-item fade-in" href="mailto:2300100017iot@gmail.com">
@@ -720,14 +617,12 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>© 2025 Etla Jashwanth</p>
   <p>Built with precision &amp; optimism</p>
 </footer>
 
 <script>
-  // Scroll fade-in
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -736,7 +631,6 @@
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
