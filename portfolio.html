@@ -5,24 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Etla Jashwanth</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #060a0f;
-    --bg2: #0c1118;
-    --surface: #111820;
-    --border: #1e2a38;
-    --accent: #4af0b4;
-    --accent2: #1de8b5;
-    --accent-dim: rgba(74,240,180,0.12);
-    --text: #dce8f5;
-    --text-muted: #5a7080;
-    --text-mid: #8aacbf;
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'DM Sans', sans-serif;
-    --display: 'Syne', sans-serif;
+    --bg: #060b10;
+    --bg2: #0b1219;
+    --surface: #0f1a24;
+    --surface2: #13202d;
+    --border: #1c2c3a;
+    --border-light: #243545;
+    --accent: #3ee8a8;
+    --accent2: #5af2be;
+    --accent-warm: #7dd4f0;      /* light blue tint */
+    --accent-gold: #e8c86e;      /* warm gold */
+    --accent-dim: rgba(62,232,168,0.10);
+    --accent-warm-dim: rgba(125,212,240,0.08);
+    --text: #d8eaf8;
+    --text-muted: #4e6a7a;
+    --text-mid: #85a8be;
+    --text-warm: #a8c8dc;
+    --mono: 'Fira Code', monospace;
+    --sans: 'Outfit', sans-serif;
+    --display: 'Lora', serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -32,7 +39,7 @@
     color: var(--text);
     font-family: var(--sans);
     font-weight: 400;
-    line-height: 1.7;
+    line-height: 1.75;
     overflow-x: hidden;
   }
 
@@ -41,7 +48,7 @@
     position: fixed;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.022;
+    opacity: 0.018;
     pointer-events: none;
     z-index: 1000;
   }
@@ -51,11 +58,31 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(to right, rgba(74,240,180,0.025) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(74,240,180,0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(to right, rgba(62,232,168,0.018) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(125,212,240,0.015) 1px, transparent 1px);
+    background-size: 64px 64px;
     pointer-events: none;
     z-index: 0;
+  }
+
+  /* Ambient glow blobs */
+  .glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.06;
+  }
+  .glow-orb-1 {
+    width: 600px; height: 600px;
+    background: var(--accent);
+    top: -100px; right: -100px;
+  }
+  .glow-orb-2 {
+    width: 400px; height: 400px;
+    background: var(--accent-warm);
+    bottom: 20%; left: -80px;
   }
 
   nav {
@@ -66,14 +93,14 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.2rem 3rem;
-    background: rgba(6,10,15,0.82);
-    backdrop-filter: blur(16px);
+    background: rgba(6,11,16,0.85);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
 
   .nav-logo {
     font-family: var(--mono);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: var(--accent);
     letter-spacing: 0.04em;
@@ -84,7 +111,7 @@
 
   .nav-links a {
     font-family: var(--mono);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
     text-decoration: none;
     letter-spacing: 0.08em;
@@ -106,7 +133,7 @@
 
   .hero-eyebrow {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--accent);
@@ -119,60 +146,62 @@
 
   .hero-name {
     font-family: var(--display);
-    font-size: clamp(2.2rem, 5.5vw, 4.8rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 0.95;
+    font-size: clamp(2.4rem, 5.5vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.0;
     color: var(--text);
     margin-bottom: 2.4rem;
   }
   .hero-name span { color: var(--accent); }
 
   .hero-philosophy {
-    max-width: 560px;
+    max-width: 580px;
     font-size: 1.05rem;
-    color: var(--text-mid);
-    line-height: 1.75;
-    margin-bottom: 1.2rem;
+    color: var(--text-warm);
+    line-height: 1.85;
+    margin-bottom: 1.4rem;
+    font-family: var(--display);
     font-style: italic;
+    font-weight: 400;
     border-left: 2px solid var(--accent);
-    padding-left: 1.2rem;
+    padding-left: 1.4rem;
   }
 
   .hero-goal {
     font-family: var(--mono);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-bottom: 3.2rem;
+    margin-bottom: 3.4rem;
     letter-spacing: 0.03em;
   }
-  .hero-goal span { color: var(--accent); }
+  .hero-goal span { color: var(--accent-warm); }
 
   .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
   .stat-item { display: flex; flex-direction: column; }
 
   .stat-num {
     font-family: var(--display);
-    font-size: 2.6rem;
-    font-weight: 800;
+    font-size: 2.8rem;
+    font-weight: 700;
     color: var(--text);
     line-height: 1;
   }
 
   .stat-label {
     font-family: var(--mono);
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     color: var(--text-muted);
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
   }
 
   .section { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; position: relative; }
 
   .section-label {
     font-family: var(--mono);
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--accent);
@@ -185,9 +214,9 @@
 
   .section-title {
     font-family: var(--display);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     margin-bottom: 3rem;
     color: var(--text);
   }
@@ -201,14 +230,14 @@
   .profile-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 2px;
+    border-radius: 6px;
     padding: 2rem;
     text-decoration: none;
     color: inherit;
     display: block;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.25s, transform 0.25s;
+    transition: border-color 0.28s, transform 0.28s, background 0.28s;
   }
 
   .profile-card::before {
@@ -216,51 +245,54 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 2px;
-    background: var(--accent);
+    background: linear-gradient(90deg, var(--accent), var(--accent-warm));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s;
   }
 
-  .profile-card:hover { border-color: rgba(74,240,180,0.35); transform: translateY(-3px); }
+  .profile-card:hover { border-color: rgba(62,232,168,0.32); transform: translateY(-4px); background: var(--surface2); }
   .profile-card:hover::before { transform: scaleX(1); }
 
   .profile-platform {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.7rem;
   }
 
   .profile-name {
     font-family: var(--display);
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.45rem;
+    font-weight: 600;
     color: var(--text);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.3rem;
   }
 
-  .profile-stats { display: flex; flex-direction: column; gap: 0.75rem; }
+  .profile-stats { display: flex; flex-direction: column; gap: 0.8rem; }
 
   .profile-stat {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid rgba(30,44,58,0.6);
   }
+  .profile-stat:last-child { border-bottom: none; padding-bottom: 0; }
 
   .profile-stat-key {
     color: var(--text-muted);
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
   }
 
   .profile-stat-val {
     color: var(--text);
-    font-family: var(--mono);
-    font-weight: 500;
-    font-size: 0.85rem;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.88rem;
   }
 
   .profile-arrow {
@@ -274,79 +306,66 @@
   .profile-card:hover .profile-arrow { color: var(--accent); transform: translate(3px, -3px); }
 
   /* ── STAR RATING ── */
-  .star-row {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .star {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-  }
-
-  .star svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-    transition: filter 0.3s;
-  }
-
-  .star.filled svg {
-    filter: drop-shadow(0 0 4px rgba(255,196,0,0.8));
-  }
-
-  .star.dim svg {
-    opacity: 0.18;
-    filter: none;
-  }
-
+  .star-row { display: flex; align-items: center; gap: 3px; }
+  .star { width: 17px; height: 17px; flex-shrink: 0; }
+  .star svg { width: 100%; height: 100%; display: block; transition: filter 0.3s; }
+  .star.filled svg { filter: drop-shadow(0 0 4px rgba(255,196,0,0.7)); }
+  .star.dim svg { opacity: 0.15; filter: none; }
   .profile-card:hover .star.filled svg {
     filter: drop-shadow(0 0 7px rgba(255,196,0,1)) drop-shadow(0 0 12px rgba(255,196,0,0.4));
   }
 
   .star-badge {
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     color: #ffc400;
     background: rgba(255,196,0,0.1);
     border: 1px solid rgba(255,196,0,0.25);
-    border-radius: 3px;
+    border-radius: 4px;
     padding: 1px 6px;
     margin-left: 4px;
     letter-spacing: 0.04em;
   }
 
+  /* Codeforces accent */
+  .profile-card.cf .profile-platform { color: var(--accent-warm); }
+  .profile-card.cf::before { background: linear-gradient(90deg, var(--accent-warm), var(--accent)); }
+
   /* ── PROJECTS ── */
   .project-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 2.5rem;
+    border-radius: 6px;
+    padding: 2.6rem;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.25s;
+    transition: border-color 0.25s, background 0.25s;
   }
-  .project-card:hover { border-color: rgba(74,240,180,0.3); }
+  .project-card:hover { border-color: rgba(62,232,168,0.28); background: var(--surface2); }
 
-  .project-number { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.15em; margin-bottom: 1rem; }
+  .project-number { font-family: var(--mono); font-size: 0.63rem; color: var(--text-muted); letter-spacing: 0.15em; margin-bottom: 1rem; }
 
-  .project-title { font-family: var(--display); font-size: 1.55rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.01em; }
+  .project-title {
+    font-family: var(--display);
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
 
-  .project-desc { color: var(--text-mid); font-size: 0.92rem; line-height: 1.75; max-width: 680px; }
+  .project-desc { color: var(--text-mid); font-size: 0.95rem; line-height: 1.8; max-width: 700px; font-family: var(--sans); font-weight: 400; }
 
   .project-tag {
     display: inline-block;
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: 0.63rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
     background: var(--accent-dim);
-    border: 1px solid rgba(74,240,180,0.2);
-    border-radius: 2px;
-    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba(62,232,168,0.2);
+    border-radius: 4px;
+    padding: 0.28rem 0.65rem;
     margin-top: 1.4rem;
   }
 
@@ -355,41 +374,76 @@
   .cert-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 2px;
+    border-radius: 6px;
     padding: 1.6rem 1.8rem;
     text-decoration: none;
     color: inherit;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    transition: border-color 0.25s, transform 0.2s;
+    transition: border-color 0.25s, transform 0.2s, background 0.25s;
   }
-  .cert-card:hover { border-color: rgba(74,240,180,0.3); transform: translateY(-2px); }
+  .cert-card:hover { border-color: rgba(62,232,168,0.28); transform: translateY(-2px); background: var(--surface2); }
 
-  .cert-issuer { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
-  .cert-name { font-size: 0.92rem; font-weight: 500; color: var(--text); line-height: 1.4; }
-  .cert-link-label { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); margin-top: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
-  .cert-no-link { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); opacity: 0.5; margin-top: 0.4rem; }
+  .cert-issuer { font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+  .cert-issuer.ibm { color: var(--accent-warm); }
+  .cert-issuer.cisco { color: var(--accent-gold); }
+  .cert-name { font-size: 0.93rem; font-weight: 500; color: var(--text); line-height: 1.4; font-family: var(--sans); }
+  .cert-link-label { font-family: var(--mono); font-size: 0.63rem; color: var(--text-muted); margin-top: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+  .cert-no-link { font-family: var(--mono); font-size: 0.63rem; color: var(--text-muted); opacity: 0.45; margin-top: 0.5rem; }
 
-  .contact-row { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-row { display: flex; flex-direction: column; gap: 1.1rem; }
 
   .contact-item {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 1.4rem;
     text-decoration: none;
     color: inherit;
-    padding: 1.2rem 1.6rem;
+    padding: 1.2rem 1.7rem;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 2px;
-    transition: border-color 0.2s, transform 0.2s;
-    max-width: 520px;
+    border-radius: 6px;
+    transition: border-color 0.22s, transform 0.22s, background 0.22s;
+    max-width: 540px;
   }
-  .contact-item:hover { border-color: rgba(74,240,180,0.3); transform: translateX(4px); }
+  .contact-item:hover { border-color: rgba(62,232,168,0.28); transform: translateX(5px); background: var(--surface2); }
 
-  .contact-type { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); min-width: 72px; }
-  .contact-value { font-size: 0.9rem; color: var(--text-mid); }
+  .contact-type { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); min-width: 72px; }
+  .contact-value { font-size: 0.92rem; color: var(--text-mid); font-family: var(--sans); }
+
+  /* Total bar */
+  .total-banner {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    background: linear-gradient(135deg, var(--surface2) 0%, rgba(62,232,168,0.06) 100%);
+    border: 1px solid rgba(62,232,168,0.2);
+    border-radius: 6px;
+    padding: 1.2rem 1.8rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .total-banner-num {
+    font-family: var(--display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .total-banner-label {
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    font-weight: 400;
+  }
+  .total-banner-label span {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 0.2rem;
+  }
 
   footer {
     border-top: 1px solid var(--border);
@@ -402,11 +456,11 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
-  footer p { font-family: var(--mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.08em; }
+  footer p { font-family: var(--mono); font-size: 0.66rem; color: var(--text-muted); letter-spacing: 0.08em; }
 
   .divider { width: 100%; height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
 
-  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 640px) {
@@ -421,8 +475,11 @@
 </head>
 <body>
 
+<div class="glow-orb glow-orb-1"></div>
+<div class="glow-orb glow-orb-2"></div>
+
 <nav>
-  <a class="nav-logo">&lt;Jashwanth Profile /&gt;</a>
+  <a class="nav-logo">&lt;Jashwanth /&gt;</a>
   <ul class="nav-links">
     <li><a href="#profiles">Profiles</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -433,7 +490,7 @@
 
 <section id="hero">
   <p class="hero-eyebrow">Software Developer</p>
-  <h1 class="hero-name">ETLA<br /><span>JASHWANTH</span></h1>
+  <h1 class="hero-name">Etla<br /><span>Jashwanth</span></h1>
   <p class="hero-philosophy">
     "I believe in the power of optimism and continuous improvement, which has driven my success in past roles and will continue to do so in the future."
   </p>
@@ -442,7 +499,8 @@
   </p>
   <div class="hero-stats">
     <div class="stat-item">
-      <span class="stat-num">420+</span>
+      <span class="stat-num">672+</span>
+
       <span class="stat-label">Problems Solved</span>
     </div>
     <div class="stat-item">
@@ -461,6 +519,16 @@
 <section id="profiles" class="section">
   <p class="section-label">Competitive Programming</p>
   <h2 class="section-title">Practice Profiles</h2>
+
+  <!-- Total count banner -->
+  <div class="total-banner fade-in">
+    <div class="total-banner-num">672+</div>
+    <div class="total-banner-label">
+      Total Problems Solved
+      <span>LeetCode (430+) · CodeChef (242) — combined across all platforms</span>
+    </div>
+  </div>
+
   <div class="profiles-grid">
 
     <a class="profile-card fade-in" href="https://leetcode.com/u/klu_00017/" target="_blank" rel="noopener">
@@ -469,7 +537,7 @@
       <div class="profile-stats">
         <div class="profile-stat">
           <span class="profile-stat-key">Problems Solved</span>
-          <span class="profile-stat-val">420+</span>
+          <span class="profile-stat-val">430+</span>
         </div>
         <div class="profile-stat">
           <span class="profile-stat-key">Contest Rating</span>
@@ -477,7 +545,7 @@
         </div>
         <div class="profile-stat">
           <span class="profile-stat-key">Medium Solved</span>
-          <span class="profile-stat-val">207</span>
+          <span class="profile-stat-val">212+</span>
         </div>
       </div>
       <span class="profile-arrow">↗</span>
@@ -499,7 +567,7 @@
       <span class="profile-arrow">↗</span>
     </a>
 
-    <!-- HackerRank — SVG stars with glow -->
+    <!-- HackerRank -->
     <a class="profile-card fade-in" href="https://www.hackerrank.com/profile/h2300100017" target="_blank" rel="noopener">
       <p class="profile-platform">Skill Badges</p>
       <p class="profile-name">HackerRank</p>
@@ -550,8 +618,8 @@
     <div style="display:flex; align-items:center; gap:1rem; margin-top:1.4rem; flex-wrap:wrap;">
       <span class="project-tag" style="margin-top:0;">Intelligent Systems</span>
       <a href="https://ev-charging-app-rho.vercel.app/login" target="_blank" rel="noopener"
-         style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s;"
-         onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+         style="font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;color:var(--accent-warm);text-decoration:none;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s;"
+         onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
         ↗ Live Demo
       </a>
     </div>
@@ -578,13 +646,13 @@
     </a>
 
     <a class="cert-card fade-in" href="http://courses.cognitiveclass.ai/certificates/7eed218409b04359bc50230b56f83553" target="_blank" rel="noopener">
-      <span class="cert-issuer">IBM</span>
+      <span class="cert-issuer ibm">IBM</span>
       <span class="cert-name">Python for Data Science</span>
       <span class="cert-link-label">↗ View Certificate</span>
     </a>
 
     <div class="cert-card fade-in">
-      <span class="cert-issuer">Cisco Networking Academy</span>
+      <span class="cert-issuer cisco">Cisco Networking Academy</span>
       <span class="cert-name">Networking Fundamentals</span>
       <span class="cert-no-link">Certificate on file</span>
     </div>
@@ -632,11 +700,11 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        setTimeout(() => entry.target.classList.add('visible'), i * 90);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
