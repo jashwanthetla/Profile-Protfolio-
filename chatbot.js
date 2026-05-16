@@ -76,17 +76,14 @@ async function askAboutJashwanth(userQuestion) {
     });
 
     const data = await response.json();
-    console.log("FULL RESPONSE:", JSON.stringify(data, null, 2));
+    
+    // TEMP: show raw response on screen
+    alert(JSON.stringify(data));
 
     if (!response.ok) {
         return data.error?.message || "Something went wrong";
     }
 
     const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!text) {
-        console.log("No text found in response:", data);
-        return "Sorry, try again!";
-    }
-
-    return text;
+    return text || "Sorry, try again!";
 }
