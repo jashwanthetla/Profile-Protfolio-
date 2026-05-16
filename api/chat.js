@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -74,7 +73,7 @@ GOAL: Targeting SDE roles at top tech companies
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.GROQ_KEY}`  // key is hidden here on server!
+        "Authorization": `Bearer ${process.env.GROQ_KEY}`
       },
       body: JSON.stringify({
         model: "llama-3.3-70b-versatile",
@@ -91,6 +90,6 @@ GOAL: Targeting SDE roles at top tech companies
     return res.status(200).json({ answer });
 
   } catch (err) {
-    return res.status(500).json({ error: "Something went wrong" });
+    return res.status(500).json({ error: err.message });
   }
 }
