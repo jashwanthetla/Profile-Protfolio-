@@ -4,13 +4,13 @@ export default async function handler(req, res) {
   }
 
   if (!process.env.GROQ_KEY) {
-    return res.status(500).json({ error: "GROQ_KEY is undefined - env var not set" });
+    return res.status(500).json({ answer: "Server config error. Please contact Jashwanth at 2300100017iot@gmail.com" });
   }
 
   const { question } = req.body;
 
   if (!question) {
-    return res.status(400).json({ error: 'No question provided' });
+    return res.status(400).json({ answer: "No question provided" });
   }
 
   const SYSTEM_PROMPT = `You are Jashwanth's personal AI assistant on his portfolio website.
@@ -45,7 +45,7 @@ GOAL: Targeting SDE roles at top tech companies
    - GitHub: github.com/jashwanthetla/Banking_System
 
 3. AI Portfolio Chatbot
-   - Built using Groq API with Llama 3.3 70B model
+   - Built using Groq API with Llama model
    - Agentic AI project, currently learning and building
 
 === ACHIEVEMENTS ===
@@ -68,7 +68,7 @@ GOAL: Targeting SDE roles at top tech companies
 - Always talk about Jashwanth positively and professionally
 - If you do not know something, say: I do not have that info, but you can reach Jashwanth at 2300100017iot@gmail.com
 - Never make up fake information
-- Keep answers short, 2 to 8 lines max
+- Keep answers short, 2 to 4 lines max
 - If asked about hiring or internships, say Jashwanth is open to opportunities and share his email
 - If asked personal or private questions, say: That is not accessible. Feel free to ask about Jashwanth's skills, projects or experience!`;
 
@@ -80,20 +80,30 @@ GOAL: Targeting SDE roles at top tech companies
         "Authorization": `Bearer ${process.env.GROQ_KEY}`
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "llama-3.1-8b-instant",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
-          { role: "user",   content: question }
+          { role: "user", content: question }
         ],
-        max_tokens: 300
+        max_tokens: 150,
+        temperature: 0.7
       })
     });
 
     const data = await response.json();
+
+    if (!response.ok) {
+      const errMsg = data?.error?.message || "";
+      if (errMsg.toLowerCase().includes("rate limit")) {
+        return res.status(200).json({ answer: "You're asking too fast! Please wait a few seconds and try again." });
+      }
+      return res.status(200).json({ answer: "Something went wrong. Try again in a moment." });
+    }
+
     const answer = data?.choices?.[0]?.message?.content || "Sorry, try again!";
     return res.status(200).json({ answer });
 
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    return res.status(200).json({ answer: "Connection error. Please try again." });
   }
 }
