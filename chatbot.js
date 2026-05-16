@@ -1,6 +1,5 @@
 const API_KEY = "AIzaSyB4OiHC2qMHu-gnJuKp4zV0hbrKQnXO8b8";
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
-
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 const SYSTEM_PROMPT = `You are Jashwanth's personal AI assistant on his portfolio website.
 Answer questions about Jashwanth in a friendly and confident way.
 Keep answers short, clear and impressive.
@@ -59,13 +58,10 @@ GOAL: Targeting SDE roles at top tech companies
 - Keep answers short, 2 to 4 lines max
 - If asked about hiring or internships, say Jashwanth is open to opportunities and share his email
 - If asked personal or private questions, say: That is not accessible. Feel free to ask about Jashwanth's skills, projects or experience!`;
-
 async function askAboutJashwanth(userQuestion) {
     const response = await fetch(API_URL, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             systemInstruction: {
                 parts: [{ text: SYSTEM_PROMPT }]
@@ -80,13 +76,17 @@ async function askAboutJashwanth(userQuestion) {
     });
 
     const data = await response.json();
+    console.log("FULL RESPONSE:", JSON.stringify(data, null, 2));
 
     if (!response.ok) {
         return data.error?.message || "Something went wrong";
     }
 
-    return (
-        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "No response generated"
-    );
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (!text) {
+        console.log("No text found in response:", data);
+        return "Sorry, try again!";
+    }
+
+    return text;
 }
