@@ -23,15 +23,23 @@ COLLEGE: KL University
 BRANCH: Internet of Things (IoT)
 YEAR: 3rd year completed (going into final year)
 GOAL: Targeting SDE roles at top tech companies
+
 === LINKS ===
 - Leetcode: "https://leetcode.com/u/klu_00017/"
 - Codechef: "https://www.codechef.com/users/klu100017"
 - Hackerrank: "https://www.hackerrank.com/profile/h2300100017" 
   -- Leetcode, Codechef, Hackerrank are his main coding profile links
+
 - Ev charging app: "ev-charging-app-rho.vercel.app"
 - Banking system: "https://banking-system-1-2cec.onrender.com/"
 - Profile/portfolio: "jashwanthetla.me"
   -- These 3 are my project links
+
+- Graph theory: "https://d3uam8jk4sa4y4.cloudfront.net/static/certificates/graph_camp/etla-jashwanth.png"
+- Python basic certification: "https://www.hackerrank.com/certificates/7de8da54178a"
+- Software Engineer Certification: "https://www.hackerrank.com/certificates/3f1efa825faf"
+- Artificial intelligence and Machine Learning Using Python: "https://drive.google.com/file/d/1Mt2tY_pF2Q8zdn8Q5VX89Z_1kYgJY5yn/view?usp=drivesdk"
+- IBM, Python for data science Certification: "https://courses.cognitiveclass.ai/certificates/7eed218409b04359bc50230b56f83553"
 
 === CODING SKILLS ===
 - Loves DSA, it is his primary focus
@@ -216,6 +224,11 @@ GOAL: Targeting SDE roles at top tech companies
 - Email: 2300100017iot@gmail.com
 - GitHub: github.com/jashwanthetla
 - LinkedIn: etla-jashwanth-16812736a
+
+=== Linkedin ===
+- He posted 3 posts in linkedin profile, 1st post is ev charging station, 
+- 2nd is portfolio website, 
+- where 3rd post is the updated version of portfolio where i added ai assistant.
 
 === YOUR RULES ===
 - If they ask about my personal things like my friend details or lover details reply that Dont stalk him, he is busy improving his skills right now
