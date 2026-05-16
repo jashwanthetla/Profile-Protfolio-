@@ -3,6 +3,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  if (!process.env.GROQ_KEY) {
+    return res.status(500).json({ error: "GROQ_KEY is undefined - env var not set" });
+  }
+
   const { question } = req.body;
 
   if (!question) {
