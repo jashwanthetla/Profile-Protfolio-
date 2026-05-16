@@ -1,3 +1,4 @@
+// v3 - debug build
 const API_KEY = "AIzaSyB4OiHC2qMHu-gnJuKp4zV0hbrKQnXO8b8";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 const SYSTEM_PROMPT = `You are Jashwanth's personal AI assistant on his portfolio website.
