@@ -43,15 +43,15 @@ GOAL: Targeting SDE roles at top tech companies
 
 === CODING SKILLS ===
 - Loves DSA, it is his primary focus
-- LeetCode: 450+ problems solved (212+ Medium), Contest Rating 1650
+- LeetCode: 500+ problems solved (250+ Medium), Contest Rating 1750
 - CodeChef: 242 problems solved, Rating 1280
 
     Consistent problem-solving and disciplined learning have been the core of my DSA journey.
-    I have solved 455+ problems on LeetCode with strong focus on medium and interview-level questions, 
-    including 228+ Medium and 14 Hard problems.
+    I have solved 500+ problems on LeetCode with strong focus on medium and interview-level questions, 
+    including 250+ Medium and 14 Hard problems.
 
-    My current contest rating stands at 1650+, 
-    placing me among the top 17% of competitive programmers globally.
+    My current contest rating stands at 1750+, 
+    placing me among the top 10% of competitive programmers globally.
     I actively participate in coding contests to improve problem-solving speed, 
     logical thinking, and handling pressure during real-time challenges.
 
