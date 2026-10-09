@@ -11,8 +11,7 @@ async function askAboutJashwanth(userQuestion) {
     const data = await response.json();
 
     if (!response.ok) {
-        return data.error || "Something went wrong";
+        return data.error || "Issue with the Agent tokens, Try Again later to know about Jashwanth";
     }
-
-    return data.answer || "Sorry, try again!";
+    return data.answer || "Issue with the Agent tokens, Try Again later to know about Jashwanth";
 }
